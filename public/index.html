@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>Itunes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+</head>
+
+<body>
+    <div class="heading">
+        <h1>find my jam</h1>
+    </div>
+    <form class="form-inline search-bar container" onsubmit="getMusic(event)"> 
+        <!--DO NOT MODIFY THE ID OR ONCLICK ATTRIBUTES IN THIS FORM-->
+        <div class="form-group">
+            <input type="text" class="form-control" id="artist" placeholder="Artist Name" />
+            <button type="button" class="btn btn-primary" id="get-music-button" onclick="getMusic(event)">Get Music</button>
+        </div>
+    </form>
+    <div class="load-button">
+        <button class="btn btn-success load-mysongs-button">Load MyTunes</button>
+        <button class="btn btn-warning load-search-button hidden">Back to my Search</button>
+    </div>
+    <div class="container-fluid" id="songs">
+        
+    </div>
+    <script src="itunes-service.js"></script>
+    <script src="my-tunes-service.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

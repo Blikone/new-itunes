@@ -1,0 +1,91 @@
+/**{
+  outline: 1px solid red;
+}*/
+body{
+  background-image: url("./images/fractal-background.jpg") 
+}
+
+.heading{
+  text-align: center;
+  margin: 32vh auto 20px auto;
+}
+h1{
+  font-size: 45px;
+  color: rgb(243,243,243)
+}
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.container.art-well{
+  justify-content: flex-start
+}
+
+.song-well{
+  margin: 5px 12px;
+  border: 2px solid #808080;
+  border-radius: 9px;
+  padding: 15px;
+}
+.artist-well{
+    white-space: nowrap
+}
+audio{
+  width: 100%;
+}
+.list-odd{
+  background-color: rgba(200,200,200,.85)
+}
+.list-even{
+  background-color: rgba(243,243,243,.85);
+}
+.selected{
+  background-color: rgba(180,250,180,.9);
+}
+.ordinal, .album-art{
+  display: inline-block;
+}
+.ordinal{
+  font-size: 18px;
+}
+.album-art{
+  height: 70px;
+  display: inline-block;
+}
+.save-track{
+  display: inline-block;
+}
+.btn-purchase{
+  background-color: #4F83E2;
+  color: white
+}
+.number-well{
+  padding-top: 25px;
+  text-align: right;
+}
+.button-well{
+  margin-top: 10px;
+}
+.load-mysongs-button, .load-search-button{
+  margin: auto;
+}
+.load-button{
+  text-align: center;
+}
+.hidden{
+  display: none;
+}
+.glyphicon-arrow-up{
+  color: green;
+}
+.glyphicon-arrow-down{
+  color: blue;
+}
+.glyphicon-remove{
+  color: red;
+}
+.glyphicon-heart{
+  color: hotpink;
+}
