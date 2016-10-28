@@ -27,16 +27,33 @@ function create(input, callback) {
     Playlist.create(playlist).then(callback).catch(callback);
 }
 
-function getAll(query, callback) {
+function getAll(callback) {
     Playlist.findAll({}).then(callback).catch(callback);
 }
 
-function getById(query, id, callback) {
-    Playlist.find(id, formatQuery(query)).then(callback).catch(callback); 
+function getById(id, callback) {
+    Playlist.find(id).then(callback).catch(callback); 
+}
+
+function editRank(id, vote, callback) {
+    Playlist.find(id).then(function recordVote(playlist) {
+        if (vote == "upvote") {
+            playlist.upvotes++
+        } else if (vote == "downvote") {
+            playlist.downvotes++
+        }
+        Playlist.update(id, playlist).then(callback).catch(callback)
+    }).catch()
+}
+
+function updatePlaylist(id, songs, callback) {
+
 }
 
 module.exports = {
     create,
     getAll,
-    getById
+    getById,
+    editRank,
+    updatePlaylist
 }
