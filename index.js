@@ -1,11 +1,10 @@
 let express = require('express');
-let bodyParser = requre('body-parser');
+let bodyParser = require('body-parser');
 let cors = require('cors');
 let routes = require('./server-assets/index');
 let handlers = require('./utils/handlers');
 let server = express();
 let port = process.env.PORT || 2468;
-let http = require('http').Server(server);
 
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({ extended: true }))
@@ -17,6 +16,6 @@ server.get('/', function(req, res) {
     res.sendfile('index.html');
 });
 
-http.listen(port, function () {
-    console.log(`Creating worlds on port: ${port}`);
+server.listen(port, function () {
+    console.log(`Rocking out to my jam on port: ${port}`);
 })

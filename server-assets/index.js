@@ -1,22 +1,18 @@
-; (function () {
+const fs = require('fs');
+const path = require('path');
 
-  const fs = require('fs');
-  const path = require('path');
+exports.router = require('express').Router();
 
-  exports.router = require('express').Router();
+let files = fs.readdirSync(__dirname);
 
-  let files = fs.readdirSync(__dirname);
+files.forEach(function (file) {
 
-  files.forEach(function (file) {
+  if (!file.endsWith('.js')) return;
+  if (file.endsWith('index.js')) return;
 
-    if (!file.endsWith('.js')) return;
-    if (file.endsWith('index.js')) return;
+  let controller = require('./' + file);
 
-    let controller = require('./' + file);
+  if (!controller.router) return;
 
-    if (!controller.router) return;
-
-    exports.router.use(controller.mountPath || '', controller.router);
-  });
-
-} ());
+  exports.router.use(controller.mountPath || '', controller.router);
+});
