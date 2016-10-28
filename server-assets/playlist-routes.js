@@ -19,7 +19,10 @@ router.route('/:id?')
         }
     })
     .post(function (req, res, next) {
-
+        Playlist.create(req.body, function(playlist) {
+            if(playlist.stack) {return next(playlist)};
+            return res.send(playlist);
+        })
     })
     .put(function (req, res, next) {
 

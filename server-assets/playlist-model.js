@@ -16,10 +16,13 @@ let Playlist = DS.defineResource({
     // }
 })
 
-function create(name, callback) {
+function create(input, callback) {
     let playlist = {
         id: uuid.v4(),
-        name: name
+        name: input.name,
+        upvotes: 0,
+        downvotes: 0,
+        songs: input.songs
     };
     Playlist.create(playlist).then(callback).catch(callback);
 }
