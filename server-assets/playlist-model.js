@@ -43,11 +43,14 @@ function editRank(id, vote, callback) {
             playlist.downvotes++
         }
         Playlist.update(id, playlist).then(callback).catch(callback)
-    }).catch()
+    }).catch(callback)
 }
 
 function updatePlaylist(id, songs, callback) {
-
+    Playlist.find(id).then(function updateSongs(playlist) {
+        playlist.songs = songs;
+        Playlist.update(id, playlist).then(callback).catch(callback)
+    }).catch(callback)
 }
 
 module.exports = {

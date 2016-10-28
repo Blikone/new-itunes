@@ -1,13 +1,6 @@
 function MyTunes() {
 
-    /////TO-DO LIST/////
-    /**DONE Add tracks when button is clicked
-     * DONE Change song's class to a light green hue whenever it's on the favorites list
-     * DONE Create functionality of remove, promote, demote methods (incl. writing HTML for that list)
-     * DONE Hook button up to showing favorites list
-     * DONE Use local storage to save/retrieve favorites list
-     * 
-     */
+    var currentPlaylistId = 'big ugly string';
 
     var _myTracks = loadTracks();
     console.log(_myTracks);
@@ -68,9 +61,20 @@ function MyTunes() {
         }
     }
 
+    var baseUrl = '../api/playlists/'
+    var fullUrl = baseUrl + currentPlaylistId;
 
-    function saveTracks() {
-        localStorage.setItem('my-tunes', JSON.stringify(_myTracks));
+    function saveTracks(playlist) {
+        var upload = {
+            songs: {}
+        }
+        playlist.forEach(function objectify(song, index) {
+            upload.songs[song.id] = song;
+            upload.songs[song.id].listOrder = index;
+        })
+        $.put(fullUrl) //finish this later
+
+        // localStorage.setItem('my-tunes', JSON.stringify(_myTracks));
     }
     function loadTracks() {
         var myTracks = localStorage.getItem('my-tunes');
@@ -80,5 +84,15 @@ function MyTunes() {
             myTracks = []
         }
         return myTracks;
+    }
+
+    this.loadListOfPlaylists = function () {
+        $.get(baseUrl, function displayPlaylists(listList) {
+            console.log(listList)
+        })
+    }
+
+    this.loadPlaylist = function (playlistId) {
+
     }
 }
